@@ -10,6 +10,7 @@ function sumValues(node: TreeNodeNum): number {
   for (const c of node.children) {
     sum += sumValues(c);
   }
+
   return sum;
 }
 
