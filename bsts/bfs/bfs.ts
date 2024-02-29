@@ -1,24 +1,30 @@
 import { BNodeNum } from "../common/bst";
 import { QueueNum } from "../common/queue";
+import { Queue } from "../common/queue";
 
 
 /** bfs(): Traverse the BST using BFS.
  * Returns an array of visited nodes. */
 
 function bfs(node: BNodeNum | null): number[] {
+  let out: number[] = [];
+  if (node === null) return out;
 
-  // if (node === null) return null;
+  const queue = new Queue([node]);
 
-  const queue = new QueueNum([node.val])
+  while (!queue.isEmpty()) {
+    let current = queue.dequeue();
+    out.push(current.val);
 
-  while (node !== null) {
-    // queue.enqueue(node.left.val);
-
-
+    if (current.left){
+      queue.enqueue(current.left);
+    }
+    if (current.right){
+      queue.enqueue(current.right);
+    }
   }
 
-
-  return [42];
+  return out;
 }
 
 export { bfs };
