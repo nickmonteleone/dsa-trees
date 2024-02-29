@@ -1,10 +1,17 @@
-import { BNodeNum } from "../common/binary-search-tree";
+import { TreeNodeNum } from "../common/tree"
 
 /** dfsPreOrder(): Traverse from the invoking node using pre-order DFS.
  * Returns an array of visited nodes. */
 
-function preOrder(node: BNodeNum | null): number[] {
-  return [42];
+function preOrder(node: TreeNodeNum | null): number[] {
+  if (node === null) return [];
+
+  let current = [node.val];
+  for (let child of node.children){
+    current = current.concat(preOrder(child));
+  }
+
+  return current;
 }
 
 
@@ -12,7 +19,14 @@ function preOrder(node: BNodeNum | null): number[] {
  * Returns an array of visited nodes. */
 
 function postOrder(node: BNodeNum | null): number[] {
-  return [42];
+  if (node === null) return [];
+
+  let current = [];
+  for (let child of node.children){
+    current = child.concat(preOrder(child));
+  }
+
+  return current.concat([node.val]);
 }
 
 export { preOrder, postOrder };
