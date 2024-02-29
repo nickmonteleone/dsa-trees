@@ -9,13 +9,10 @@ function minDepthToIncomplete(node: BNodeNum): number {
   if (node === null) return 0;
   if (node.lnode === null || node.rnode === null) return 1;
 
-  let minCount = 1;
+  let leftCount = minDepthToIncomplete(node.lnode);
+  let rightCount = minDepthToIncomplete(node.rnode);
 
-  for (const c of [node.lnode, node.rnode]) {
-    const count = minDepthToIncomplete(c);
-
-    minCount = Math.min(count, minCount);
-  }
+  let minCount = Math.min(leftCount,rightCount);
 
   return ++minCount;
 }

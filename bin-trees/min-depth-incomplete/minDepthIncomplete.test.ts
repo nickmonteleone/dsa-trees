@@ -1,5 +1,5 @@
 import { expect, it } from "vitest";
-import { largeTree, largerTree, longTree, smallTree } from "../common/bintree.test";
+import { largeTree, largerTree, longTree, smallTree, denseTree } from "../common/bintree.test";
 import { minDepthToIncomplete } from "./minDepthIncomplete";
 
 it("handles simple trees", function () {
@@ -16,4 +16,8 @@ it("handles long tree", function () {
 
 it("handles larger tree", function () {
   expect(minDepthToIncomplete(largerTree.root!)).toBe(3);
+});
+
+it("handles dense tree", function () {
+  expect(minDepthToIncomplete(denseTree.root!)).toBe(3);
 });
