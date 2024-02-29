@@ -15,7 +15,7 @@ function iDfs(start: GNodeStr): string[] {
   return ["todo"];
 }
 
-/** Return array of nodes, in BFS order (recursive version)  */
+/** Return array of nodes, in BFS order (iterative version)  */
 
 function bfs(start: GNodeStr): string[] {
   return ["todo"];
