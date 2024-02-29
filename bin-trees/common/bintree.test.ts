@@ -35,6 +35,33 @@ const largeTree = new BinTreeNum(
 //         /   \       /
 //        2     1     1
 //
+
+const largerTree = new BinTreeNum(
+    new BNodeNum(6,
+        new BNodeNum(5,
+            new BNodeNum(4,
+                new BNodeNum(3,new BNodeNum(2),new BNodeNum(1)),new BNodeNum(1),),
+            new BNodeNum(2)),
+        new BNodeNum(5,
+            new BNodeNum(3,
+                new BNodeNum(2),
+                new BNodeNum(1)),
+            new BNodeNum(3,
+                new BNodeNum(2),
+                new BNodeNum(1)),
+            )));
+
+//                   6
+//                /     \
+//               5       5
+//              /  \    / \
+//             4    2   2  3
+//            /          /  \
+//           3          2    1
+//         /   \       /
+//        2     1     1
+//
+
 const longTree = new BinTreeNum(
     new BNodeNum(6,
         new BNodeNum(5,
@@ -66,4 +93,4 @@ it("serializes", function () {
 })
 
 
-export { smallTree, largeTree, longTree };
+export { smallTree, largeTree, largerTree, longTree };

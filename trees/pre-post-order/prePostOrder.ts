@@ -7,7 +7,7 @@ function preOrder(node: TreeNodeNum | null): number[] {
   if (node === null) return [];
 
   let current = [node.val];
-  for (let child of node.children){
+  for (const child of node.children){
     current = current.concat(preOrder(child));
   }
 
@@ -22,7 +22,7 @@ function postOrder(node: TreeNodeNum | null): number[] {
   if (node === null) return [];
 
   let current:number[] = [];
-  for (let child of node.children){
+  for (const child of node.children){
     current = current.concat(postOrder(child))
   }
 
