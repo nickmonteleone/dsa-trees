@@ -38,7 +38,7 @@ class GraphStr {
   }
 
   /** Add array of edges to graph. */
-  addEdges(edgeArray: string[][]){
+  addEdges(edgeArray: GNodeStr[][]){
     for (const edge of edgeArray) {
       this.addEdge(edge[0], edge[1])
     }

@@ -6,7 +6,16 @@ function rDfs(
     start: GNodeStr,
     result: string[] = [],
     visited = new Set([start])): string[] {
-  return ["todo"];
+
+  visited.add(start);
+  result.push(start.value);
+
+  for (const node of start.adjacent) {
+    if (!visited.has(node)) {
+      result = rDfs(node, result, visited);
+    }
+  }
+  return result;
 }
 
 /** Return array of nodes, in DFS order (iterative version)  */
