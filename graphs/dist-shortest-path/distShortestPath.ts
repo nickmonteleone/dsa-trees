@@ -11,6 +11,7 @@ function distShortestPath(start: GNodeStr, sought: GNodeStr): number {
 
   if (start === sought) return steps;
 
+  // TODO: node and distance in queue, wouldn't need steps
   const toVisit = new Queue([start]);
   const visited = new Set([start]);
 
