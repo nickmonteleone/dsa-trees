@@ -9,12 +9,12 @@ function rDfs(
   result: string[] = [],
   visited = new Set([start])): string[] {
 
-  visited.add(start);
   result.push(start.value);
 
   for (const node of start.adjacent) {
     if (!visited.has(node)) {
-      result = rDfs(node, result, visited);
+      visited.add(node);
+      rDfs(node, result, visited);
     }
   }
   return result;
@@ -28,11 +28,11 @@ function iDfs(start: GNodeStr): string[] {
   const visited = new Set([start]);
 
   while (!toVisit.isEmpty()) {
-    let current = toVisit.pop();
+    const current = toVisit.pop();
 
     result.push(current.value);
 
-    for (let child of current.adjacent) {
+    for (const child of current.adjacent) {
       if (!visited.has(child)) {
         toVisit.push(child);
         visited.add(child);
@@ -46,17 +46,17 @@ function iDfs(start: GNodeStr): string[] {
 /** Return array of nodes, in BFS order (iterative version)  */
 
 function bfs(start: GNodeStr): string[] {
-  const toVisit = new Queue([start])
+  const toVisit = new Queue([start]);
   const visited = new Set([start]);
   const result: string[] = [];
 
-  while(!toVisit.isEmpty()){
-    let current = toVisit.dequeue();
+  while (!toVisit.isEmpty()) {
+    const current = toVisit.dequeue();
 
     result.push(current.value);
 
-    for (let child of current.adjacent){
-      if (!visited.has(child)){
+    for (const child of current.adjacent) {
+      if (!visited.has(child)) {
         toVisit.enqueue(child);
         visited.add(child);
       }

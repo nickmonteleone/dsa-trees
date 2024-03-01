@@ -7,15 +7,11 @@ function inOrder(node: BNodeNum | null): number[] {
   let out: number[] = [];
   if (node === null) return [];
 
-  if (node.left) {
-    out = out.concat(inOrder(node.left));
-  }
+  out = out.concat(inOrder(node.left));
 
   out.push(node.val);
 
-  if (node.right) {
-    out = out.concat(inOrder(node.right));
-  }
+  out = out.concat(inOrder(node.right));
 
   return out;
 }
@@ -33,15 +29,11 @@ function inOrderAccum(
 
   if (node === null) return accum;
 
-  if (node.left) {
-    accum = inOrderAccum(node.left, accum);
-  }
+  accum = inOrderAccum(node.left, accum);
 
   accum.push(node.val);
 
-  if (node.right) {
-    accum = inOrderAccum(node.right, accum);
-  }
+  accum = inOrderAccum(node.right, accum);
 
   return accum;
 }

@@ -1,25 +1,20 @@
 import { BNodeNum } from "../common/bst";
 import { Queue } from "../common/queue";
-import { Stack } from "../common/stack";}
+import { Stack } from "../common/stack";
 
 
 /** bfs(): Traverse the BST using BFS.
  * Returns an array of visited nodes. */
 
 function bfs(node: BNodeNum | null): number[] {
-  let out: number[] = [];
-  if (node === null) return out;
-
-  const toVisit = new Queue([node]);
+  const out: number[] = [];
+  const toVisit = new Queue<BNodeNum|null>([node]);
 
   while (!toVisit.isEmpty()) {
     let current = toVisit.dequeue();
-    out.push(current.val);
-
-    if (current.left){
+    if (current !== null) {
+      out.push(current.val);
       toVisit.enqueue(current.left);
-    }
-    if (current.right){
       toVisit.enqueue(current.right);
     }
   }
@@ -30,19 +25,14 @@ function bfs(node: BNodeNum | null): number[] {
 /** Dev demo for depth first to compare with bfs */
 
 function dfs(node: BNodeNum | null): number[] {
-  let out: number[] = [];
-  if (node === null) return out;
-
-  const toVisit = new Stack([node]);
+  const out: number[] = [];
+  const toVisit = new Stack<BNodeNum|null>([node]);
 
   while (!toVisit.isEmpty()) {
     let current = toVisit.pop();
-    out.push(current.val);
-
-    if (current.left){
+    if (current !== null) {
+      out.push(current.val);
       toVisit.push(current.left);
-    }
-    if (current.right){
       toVisit.push(current.right);
     }
   }
