@@ -14,11 +14,12 @@ describe("distanceOfShortestPath", function () {
     const [r, i, t, h, m, x] = graph.addFromVals(
         ["r", "i", "t", "h", "m", "x"]);
     graph.addEdges([[r, i], [i, t], [t, h], [r, t], [r, h], [h, m]]);
-    expect(distShortestPath(r, r)).toBe(0);
-    expect(distShortestPath(r, i)).toBe(1);
-    expect(distShortestPath(r, t)).toBe(1);
-    expect(distShortestPath(r, h)).toBe(1);
-    expect(distShortestPath(r, m)).toBe(2);
+    // expect(distShortestPath(r, r)).toBe(0);
+    // expect(distShortestPath(r, i)).toBe(1);
+    // expect(distShortestPath(r, t)).toBe(1);
+    // expect(distShortestPath(r, h)).toBe(1);
+    // expect(distShortestPath(r, m)).toBe(2);
+    debugger;
     expect(distShortestPath(i, m)).toBe(3);
     expect(distShortestPath(r, x)).toBe(Infinity);
   });

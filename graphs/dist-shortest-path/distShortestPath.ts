@@ -7,20 +7,21 @@ import { Stack } from "../common/stack";
  * If no path exists, return Infinity. */
 
 function distShortestPath(start: GNodeStr, sought: GNodeStr): number {
-  let steps = 0;
-
-  if (start === sought) return steps;
+  debugger;
+  // if (start === sought) return steps;
 
   // TODO: node and distance in queue, wouldn't need steps
-  const toVisit = new Queue([start]);
+  const toVisit = new Queue([{current:start,steps: 0}]);
   const visited = new Set([start]);
 
   const nodesInStep: Set<GNode<string>> = new Set([start]);
 
   while (!toVisit.isEmpty()) {
-    const current = toVisit.dequeue();
+    let {current, steps} = toVisit.dequeue();
+    console.log("nodesInStep (before delete):",nodesInStep);
     nodesInStep.delete(current);
 
+    console.log("current:%o steps%o:",current.value,steps)
     if (current.value === sought.value) {
       return steps;
     }
@@ -29,6 +30,7 @@ function distShortestPath(start: GNodeStr, sought: GNodeStr): number {
       steps++;
       nodesInStep.clear();
 
+      console.log("nodesInStep (after steps++):",nodesInStep);
       for (const adjNode of current.adjacent) {
         if (!visited.has(adjNode)) {
           nodesInStep.add(adjNode);
@@ -38,7 +40,7 @@ function distShortestPath(start: GNodeStr, sought: GNodeStr): number {
 
     for (const child of current.adjacent) {
       if (!visited.has(child)) {
-        toVisit.enqueue(child);
+        toVisit.enqueue({current:child,steps});
         visited.add(child);
       }
     }
